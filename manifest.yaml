@@ -1,0 +1,163 @@
+# ============================================================
+# catalog — каталог товаров. «Чистое» приложение: чувствительного почти нет,
+# зато много похожих имён. Меряет шум. Единственное настоящее ПД — email
+# в подписке на поступление товара.
+# ============================================================
+app: catalog
+title: "SDD testbed — каталог товаров (ловушки)"
+package: ru.testbed.catalog
+port: 8085
+
+dtos:
+  ProductDto:
+    - [id, Long]
+    - [sku, String]
+    - [title, String]
+    - [description, String, NONE trap, "описание товара — свободный текст, но не про людей"]
+    - [price, BigDecimal]
+    - [currency, String]
+    - [panel, String, NONE trap, "тип панели (no_match для pan)"]
+    - [cardboardThickness, Integer, NONE trap]
+    - [tags, List<String>]
+
+  PageDto:
+    - [data, List<ProductDto>, NONE trap, "обёртка пагинации: data — типизированный список"]
+    - [total, Long]
+    - [nextPageToken, String, NONE trap, "курсор пагинации, не учётные данные"]
+
+  BulkImportRequest:
+    - [data, List<ProductDto>, NONE trap, "список товаров на импорт"]
+    - [dryRun, Boolean]
+
+  StockSubscriptionDto:
+    - [email, String, PII_DIRECT, "единственное настоящее ПД в приложении"]
+    - [notifyOnRestock, Boolean]
+
+  AuthorDto:
+    - [id, Long]
+    - [penName, String, GRAY, "псевдоним автора книги — публичен"]
+    - [booksCount, Integer]
+
+  CardinalityStatsDto:
+    - [cardinality, Long, NONE trap]
+    - [distinctValues, Long]
+
+  SalesReportDto:
+    - [period, String]
+    - [totalRevenue, BigDecimal, GRAY, "агрегированная выручка — коммерческая тайна, но не ПД"]
+    - [ordersCount, Long]
+    - [statusCode, Integer, NONE trap]
+
+  FileDto:
+    - [fileName, String, NONE trap]
+    - [contentType, String, NONE trap]
+    - [hostName, String, NONE trap]
+    - [size, Long]
+    - [checksum, String]
+
+controllers:
+  - class: ProductController
+    base: /api/products
+    endpoints:
+      - op: listProducts
+        http: GET
+        params:
+          - [pageToken, query, String, NONE trap, "курсор пагинации"]
+          - [pageSize, query, Integer]
+          - [sortOrder, query, String, NONE trap]
+          - [countryCode, query, String, NONE trap]
+        returns: PageDto
+        expect: []
+      - op: getProduct
+        http: GET
+        path: /{productId}
+        params: [[productId, path, Long]]
+        returns: ProductDto
+        expect: []
+      - op: bulkImport
+        http: POST
+        path: /bulk
+        body: [request, BulkImportRequest]
+        expect: []
+        bulk: true
+        why: "массовый импорт товаров — без ПД, DYNAMIC здесь неверен"
+      - op: exportProducts
+        http: GET
+        path: /export
+        params:
+          - [zip, query, Boolean, NONE trap, "упаковать в zip-архив, а не почтовый индекс"]
+          - [format, query, String]
+        returns: String
+        returns_label: ["NONE", "CSV каталога"]
+        expect: []
+        bulk: true
+      - op: subscribe
+        http: POST
+        path: /{productId}/subscriptions
+        params: [[productId, path, Long]]
+        body: [request, StockSubscriptionDto]
+        expect: []
+        allow: [PII_DIRECT]
+        why: "подписка на поступление товара, не платёжная подписка"
+
+  - class: AuthorController
+    base: /api/authors
+    endpoints:
+      - op: listAuthors
+        http: GET
+        returns: List<AuthorDto>
+        expect: []
+
+  - class: StatsController
+    base: /api/stats
+    endpoints:
+      - op: cardinality
+        http: GET
+        path: /cardinality
+        params: [[field, query, String]]
+        returns: CardinalityStatsDto
+        expect: []
+
+  - class: SalesReportController
+    base: /api/reports
+    endpoints:
+      - op: salesReport
+        http: GET
+        path: /sales
+        params:
+          - [from, query, LocalDate]
+          - [to, query, LocalDate]
+        returns: SalesReportDto
+        expect: []
+        bulk: true
+
+  - class: FileController
+    base: /api/files
+    endpoints:
+      - op: getFile
+        http: GET
+        path: /{fileId}
+        params: [[fileId, path, String]]
+        returns: FileDto
+        expect: []
+
+  - class: CollectionController
+    base: /api/collections
+    doc: "Подборка открыток (cards) — ловушка для платёжного правила."
+    endpoints:
+      - op: greetingCards
+        http: GET
+        path: /cards
+        returns: List<ProductDto>
+        expect: []
+
+constants:
+  - class: CatalogConstants
+    items:
+      - [CDN_HOST, "cdn.catalog.example"]
+      - [API_VERSION, "1.10.2.0", NONE trap, "номер версии, похож на публичный IPv4"]
+      - [LOYALTY_PRODUCT_ID, "5100382700012347", NONE trap, "16-значный артикул, случайно проходит Luhn"]
+      - [PLACEHOLDER_EMAIL, "user@example.com", NONE trap, "плейсхолдер в форме"]
+      - [PRICE_LIST_URL, "https://catalog.example/price-list.xlsx"]
+      - [DEFAULT_SORT, "price,asc"]
+      - [WATERMARK, "© Catalog Ltd 2026"]

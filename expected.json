@@ -1,0 +1,1164 @@
+{
+  "app": "catalog",
+  "title": "SDD testbed — каталог товаров (ловушки)",
+  "fields": [
+    {
+      "id": "catalog:GET /api/products:param:pageToken",
+      "method": "GET",
+      "path": "/api/products",
+      "location": "param",
+      "in": "query",
+      "name": "pageToken",
+      "rel_path": "pageToken",
+      "label_ref": "param:GET /api/products:pageToken",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "курсор пагинации"
+    },
+    {
+      "id": "catalog:GET /api/products:param:pageSize",
+      "method": "GET",
+      "path": "/api/products",
+      "location": "param",
+      "in": "query",
+      "name": "pageSize",
+      "rel_path": "pageSize",
+      "label_ref": "param:GET /api/products:pageSize",
+      "type": "Integer",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products:param:sortOrder",
+      "method": "GET",
+      "path": "/api/products",
+      "location": "param",
+      "in": "query",
+      "name": "sortOrder",
+      "rel_path": "sortOrder",
+      "label_ref": "param:GET /api/products:sortOrder",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products:param:countryCode",
+      "method": "GET",
+      "path": "/api/products",
+      "location": "param",
+      "in": "query",
+      "name": "countryCode",
+      "rel_path": "countryCode",
+      "label_ref": "param:GET /api/products:countryCode",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products:response:data",
+      "method": "GET",
+      "path": "/api/products",
+      "location": "response_body",
+      "name": "data",
+      "rel_path": "data",
+      "label_ref": "dto:PageDto.data",
+      "type": "List<ProductDto>",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "обёртка пагинации: data — типизированный список"
+    },
+    {
+      "id": "catalog:GET /api/products:response:total",
+      "method": "GET",
+      "path": "/api/products",
+      "location": "response_body",
+      "name": "total",
+      "rel_path": "total",
+      "label_ref": "dto:PageDto.total",
+      "type": "Long",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products:response:nextPageToken",
+      "method": "GET",
+      "path": "/api/products",
+      "location": "response_body",
+      "name": "nextPageToken",
+      "rel_path": "nextPageToken",
+      "label_ref": "dto:PageDto.nextPageToken",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "курсор пагинации, не учётные данные"
+    },
+    {
+      "id": "catalog:GET /api/products/{productId}:param:productId",
+      "method": "GET",
+      "path": "/api/products/{productId}",
+      "location": "param",
+      "in": "path",
+      "name": "productId",
+      "rel_path": "productId",
+      "label_ref": "param:GET /api/products/{productId}:productId",
+      "type": "Long",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products/{productId}:response:id",
+      "method": "GET",
+      "path": "/api/products/{productId}",
+      "location": "response_body",
+      "name": "id",
+      "rel_path": "id",
+      "label_ref": "dto:ProductDto.id",
+      "type": "Long",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products/{productId}:response:sku",
+      "method": "GET",
+      "path": "/api/products/{productId}",
+      "location": "response_body",
+      "name": "sku",
+      "rel_path": "sku",
+      "label_ref": "dto:ProductDto.sku",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products/{productId}:response:title",
+      "method": "GET",
+      "path": "/api/products/{productId}",
+      "location": "response_body",
+      "name": "title",
+      "rel_path": "title",
+      "label_ref": "dto:ProductDto.title",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products/{productId}:response:description",
+      "method": "GET",
+      "path": "/api/products/{productId}",
+      "location": "response_body",
+      "name": "description",
+      "rel_path": "description",
+      "label_ref": "dto:ProductDto.description",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "описание товара — свободный текст, но не про людей"
+    },
+    {
+      "id": "catalog:GET /api/products/{productId}:response:price",
+      "method": "GET",
+      "path": "/api/products/{productId}",
+      "location": "response_body",
+      "name": "price",
+      "rel_path": "price",
+      "label_ref": "dto:ProductDto.price",
+      "type": "BigDecimal",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products/{productId}:response:currency",
+      "method": "GET",
+      "path": "/api/products/{productId}",
+      "location": "response_body",
+      "name": "currency",
+      "rel_path": "currency",
+      "label_ref": "dto:ProductDto.currency",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products/{productId}:response:panel",
+      "method": "GET",
+      "path": "/api/products/{productId}",
+      "location": "response_body",
+      "name": "panel",
+      "rel_path": "panel",
+      "label_ref": "dto:ProductDto.panel",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "тип панели (no_match для pan)"
+    },
+    {
+      "id": "catalog:GET /api/products/{productId}:response:cardboardThickness",
+      "method": "GET",
+      "path": "/api/products/{productId}",
+      "location": "response_body",
+      "name": "cardboardThickness",
+      "rel_path": "cardboardThickness",
+      "label_ref": "dto:ProductDto.cardboardThickness",
+      "type": "Integer",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products/{productId}:response:tags",
+      "method": "GET",
+      "path": "/api/products/{productId}",
+      "location": "response_body",
+      "name": "tags",
+      "rel_path": "tags",
+      "label_ref": "dto:ProductDto.tags",
+      "type": "List<String>",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:POST /api/products/bulk:request:data",
+      "method": "POST",
+      "path": "/api/products/bulk",
+      "location": "request_body",
+      "name": "data",
+      "rel_path": "data",
+      "json_path_rc": "$.request.data",
+      "label_ref": "dto:BulkImportRequest.data",
+      "type": "List<ProductDto>",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "список товаров на импорт"
+    },
+    {
+      "id": "catalog:POST /api/products/bulk:request:dryRun",
+      "method": "POST",
+      "path": "/api/products/bulk",
+      "location": "request_body",
+      "name": "dryRun",
+      "rel_path": "dryRun",
+      "json_path_rc": "$.request.dryRun",
+      "label_ref": "dto:BulkImportRequest.dryRun",
+      "type": "Boolean",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products/export:param:zip",
+      "method": "GET",
+      "path": "/api/products/export",
+      "location": "param",
+      "in": "query",
+      "name": "zip",
+      "rel_path": "zip",
+      "label_ref": "param:GET /api/products/export:zip",
+      "type": "Boolean",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "упаковать в zip-архив, а не почтовый индекс"
+    },
+    {
+      "id": "catalog:GET /api/products/export:param:format",
+      "method": "GET",
+      "path": "/api/products/export",
+      "location": "param",
+      "in": "query",
+      "name": "format",
+      "rel_path": "format",
+      "label_ref": "param:GET /api/products/export:format",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products/export:response:$",
+      "method": "GET",
+      "path": "/api/products/export",
+      "location": "response_body",
+      "name": "$",
+      "rel_path": "",
+      "label_ref": "resp:GET /api/products/export",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": "CSV каталога"
+    },
+    {
+      "id": "catalog:POST /api/products/{productId}/subscriptions:param:productId",
+      "method": "POST",
+      "path": "/api/products/{productId}/subscriptions",
+      "location": "param",
+      "in": "path",
+      "name": "productId",
+      "rel_path": "productId",
+      "label_ref": "param:POST /api/products/{productId}/subscriptions:productId",
+      "type": "Long",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:POST /api/products/{productId}/subscriptions:request:email",
+      "method": "POST",
+      "path": "/api/products/{productId}/subscriptions",
+      "location": "request_body",
+      "name": "email",
+      "rel_path": "email",
+      "json_path_rc": "$.request.email",
+      "label_ref": "dto:StockSubscriptionDto.email",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_DIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": "единственное настоящее ПД в приложении"
+    },
+    {
+      "id": "catalog:POST /api/products/{productId}/subscriptions:request:notifyOnRestock",
+      "method": "POST",
+      "path": "/api/products/{productId}/subscriptions",
+      "location": "request_body",
+      "name": "notifyOnRestock",
+      "rel_path": "notifyOnRestock",
+      "json_path_rc": "$.request.notifyOnRestock",
+      "label_ref": "dto:StockSubscriptionDto.notifyOnRestock",
+      "type": "Boolean",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/authors:response:id",
+      "method": "GET",
+      "path": "/api/authors",
+      "location": "response_body",
+      "name": "id",
+      "rel_path": "id",
+      "label_ref": "dto:AuthorDto.id",
+      "type": "Long",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/authors:response:penName",
+      "method": "GET",
+      "path": "/api/authors",
+      "location": "response_body",
+      "name": "penName",
+      "rel_path": "penName",
+      "label_ref": "dto:AuthorDto.penName",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "GRAY",
+      "accept": [],
+      "kind": "gray",
+      "why": "псевдоним автора книги — публичен"
+    },
+    {
+      "id": "catalog:GET /api/authors:response:booksCount",
+      "method": "GET",
+      "path": "/api/authors",
+      "location": "response_body",
+      "name": "booksCount",
+      "rel_path": "booksCount",
+      "label_ref": "dto:AuthorDto.booksCount",
+      "type": "Integer",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/stats/cardinality:param:field",
+      "method": "GET",
+      "path": "/api/stats/cardinality",
+      "location": "param",
+      "in": "query",
+      "name": "field",
+      "rel_path": "field",
+      "label_ref": "param:GET /api/stats/cardinality:field",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/stats/cardinality:response:cardinality",
+      "method": "GET",
+      "path": "/api/stats/cardinality",
+      "location": "response_body",
+      "name": "cardinality",
+      "rel_path": "cardinality",
+      "label_ref": "dto:CardinalityStatsDto.cardinality",
+      "type": "Long",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/stats/cardinality:response:distinctValues",
+      "method": "GET",
+      "path": "/api/stats/cardinality",
+      "location": "response_body",
+      "name": "distinctValues",
+      "rel_path": "distinctValues",
+      "label_ref": "dto:CardinalityStatsDto.distinctValues",
+      "type": "Long",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/reports/sales:param:from",
+      "method": "GET",
+      "path": "/api/reports/sales",
+      "location": "param",
+      "in": "query",
+      "name": "from",
+      "rel_path": "from",
+      "label_ref": "param:GET /api/reports/sales:from",
+      "type": "LocalDate",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/reports/sales:param:to",
+      "method": "GET",
+      "path": "/api/reports/sales",
+      "location": "param",
+      "in": "query",
+      "name": "to",
+      "rel_path": "to",
+      "label_ref": "param:GET /api/reports/sales:to",
+      "type": "LocalDate",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/reports/sales:response:period",
+      "method": "GET",
+      "path": "/api/reports/sales",
+      "location": "response_body",
+      "name": "period",
+      "rel_path": "period",
+      "label_ref": "dto:SalesReportDto.period",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/reports/sales:response:totalRevenue",
+      "method": "GET",
+      "path": "/api/reports/sales",
+      "location": "response_body",
+      "name": "totalRevenue",
+      "rel_path": "totalRevenue",
+      "label_ref": "dto:SalesReportDto.totalRevenue",
+      "type": "BigDecimal",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "GRAY",
+      "accept": [],
+      "kind": "gray",
+      "why": "агрегированная выручка — коммерческая тайна, но не ПД"
+    },
+    {
+      "id": "catalog:GET /api/reports/sales:response:ordersCount",
+      "method": "GET",
+      "path": "/api/reports/sales",
+      "location": "response_body",
+      "name": "ordersCount",
+      "rel_path": "ordersCount",
+      "label_ref": "dto:SalesReportDto.ordersCount",
+      "type": "Long",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/reports/sales:response:statusCode",
+      "method": "GET",
+      "path": "/api/reports/sales",
+      "location": "response_body",
+      "name": "statusCode",
+      "rel_path": "statusCode",
+      "label_ref": "dto:SalesReportDto.statusCode",
+      "type": "Integer",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/files/{fileId}:param:fileId",
+      "method": "GET",
+      "path": "/api/files/{fileId}",
+      "location": "param",
+      "in": "path",
+      "name": "fileId",
+      "rel_path": "fileId",
+      "label_ref": "param:GET /api/files/{fileId}:fileId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/files/{fileId}:response:fileName",
+      "method": "GET",
+      "path": "/api/files/{fileId}",
+      "location": "response_body",
+      "name": "fileName",
+      "rel_path": "fileName",
+      "label_ref": "dto:FileDto.fileName",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/files/{fileId}:response:contentType",
+      "method": "GET",
+      "path": "/api/files/{fileId}",
+      "location": "response_body",
+      "name": "contentType",
+      "rel_path": "contentType",
+      "label_ref": "dto:FileDto.contentType",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/files/{fileId}:response:hostName",
+      "method": "GET",
+      "path": "/api/files/{fileId}",
+      "location": "response_body",
+      "name": "hostName",
+      "rel_path": "hostName",
+      "label_ref": "dto:FileDto.hostName",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/files/{fileId}:response:size",
+      "method": "GET",
+      "path": "/api/files/{fileId}",
+      "location": "response_body",
+      "name": "size",
+      "rel_path": "size",
+      "label_ref": "dto:FileDto.size",
+      "type": "Long",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/files/{fileId}:response:checksum",
+      "method": "GET",
+      "path": "/api/files/{fileId}",
+      "location": "response_body",
+      "name": "checksum",
+      "rel_path": "checksum",
+      "label_ref": "dto:FileDto.checksum",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/collections/cards:response:id",
+      "method": "GET",
+      "path": "/api/collections/cards",
+      "location": "response_body",
+      "name": "id",
+      "rel_path": "id",
+      "label_ref": "dto:ProductDto.id",
+      "type": "Long",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/collections/cards:response:sku",
+      "method": "GET",
+      "path": "/api/collections/cards",
+      "location": "response_body",
+      "name": "sku",
+      "rel_path": "sku",
+      "label_ref": "dto:ProductDto.sku",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/collections/cards:response:title",
+      "method": "GET",
+      "path": "/api/collections/cards",
+      "location": "response_body",
+      "name": "title",
+      "rel_path": "title",
+      "label_ref": "dto:ProductDto.title",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/collections/cards:response:description",
+      "method": "GET",
+      "path": "/api/collections/cards",
+      "location": "response_body",
+      "name": "description",
+      "rel_path": "description",
+      "label_ref": "dto:ProductDto.description",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "описание товара — свободный текст, но не про людей"
+    },
+    {
+      "id": "catalog:GET /api/collections/cards:response:price",
+      "method": "GET",
+      "path": "/api/collections/cards",
+      "location": "response_body",
+      "name": "price",
+      "rel_path": "price",
+      "label_ref": "dto:ProductDto.price",
+      "type": "BigDecimal",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/collections/cards:response:currency",
+      "method": "GET",
+      "path": "/api/collections/cards",
+      "location": "response_body",
+      "name": "currency",
+      "rel_path": "currency",
+      "label_ref": "dto:ProductDto.currency",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/collections/cards:response:panel",
+      "method": "GET",
+      "path": "/api/collections/cards",
+      "location": "response_body",
+      "name": "panel",
+      "rel_path": "panel",
+      "label_ref": "dto:ProductDto.panel",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "тип панели (no_match для pan)"
+    },
+    {
+      "id": "catalog:GET /api/collections/cards:response:cardboardThickness",
+      "method": "GET",
+      "path": "/api/collections/cards",
+      "location": "response_body",
+      "name": "cardboardThickness",
+      "rel_path": "cardboardThickness",
+      "label_ref": "dto:ProductDto.cardboardThickness",
+      "type": "Integer",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/collections/cards:response:tags",
+      "method": "GET",
+      "path": "/api/collections/cards",
+      "location": "response_body",
+      "name": "tags",
+      "rel_path": "tags",
+      "label_ref": "dto:ProductDto.tags",
+      "type": "List<String>",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    }
+  ],
+  "endpoints": [
+    {
+      "id": "catalog:GET /api/products",
+      "method": "GET",
+      "path": "/api/products",
+      "handler": "ProductController.listProducts",
+      "expect": [],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/products/{productId}",
+      "method": "GET",
+      "path": "/api/products/{productId}",
+      "handler": "ProductController.getProduct",
+      "expect": [],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "catalog:POST /api/products/bulk",
+      "method": "POST",
+      "path": "/api/products/bulk",
+      "handler": "ProductController.bulkImport",
+      "expect": [],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": true
+      },
+      "why": "массовый импорт товаров — без ПД, DYNAMIC здесь неверен"
+    },
+    {
+      "id": "catalog:GET /api/products/export",
+      "method": "GET",
+      "path": "/api/products/export",
+      "handler": "ProductController.exportProducts",
+      "expect": [],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": true
+      },
+      "why": ""
+    },
+    {
+      "id": "catalog:POST /api/products/{productId}/subscriptions",
+      "method": "POST",
+      "path": "/api/products/{productId}/subscriptions",
+      "handler": "ProductController.subscribe",
+      "expect": [],
+      "allow": [
+        "PII_DIRECT"
+      ],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": "подписка на поступление товара, не платёжная подписка"
+    },
+    {
+      "id": "catalog:GET /api/authors",
+      "method": "GET",
+      "path": "/api/authors",
+      "handler": "AuthorController.listAuthors",
+      "expect": [],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/stats/cardinality",
+      "method": "GET",
+      "path": "/api/stats/cardinality",
+      "handler": "StatsController.cardinality",
+      "expect": [],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/reports/sales",
+      "method": "GET",
+      "path": "/api/reports/sales",
+      "handler": "SalesReportController.salesReport",
+      "expect": [],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": true
+      },
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/files/{fileId}",
+      "method": "GET",
+      "path": "/api/files/{fileId}",
+      "handler": "FileController.getFile",
+      "expect": [],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "catalog:GET /api/collections/cards",
+      "method": "GET",
+      "path": "/api/collections/cards",
+      "handler": "CollectionController.greetingCards",
+      "expect": [],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    }
+  ],
+  "constants": [
+    {
+      "id": "catalog:const:CatalogConstants.CDN_HOST",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "symbol": "CDN_HOST",
+      "value_preview": "cdn.catalog.example",
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:const:CatalogConstants.API_VERSION",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "symbol": "API_VERSION",
+      "value_preview": "1.10.2.0",
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "номер версии, похож на публичный IPv4"
+    },
+    {
+      "id": "catalog:const:CatalogConstants.LOYALTY_PRODUCT_ID",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "symbol": "LOYALTY_PRODUCT_ID",
+      "value_preview": "5100382700012347",
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "16-значный артикул, случайно проходит Luhn"
+    },
+    {
+      "id": "catalog:const:CatalogConstants.PLACEHOLDER_EMAIL",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "symbol": "PLACEHOLDER_EMAIL",
+      "value_preview": "user@example.com",
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "плейсхолдер в форме"
+    },
+    {
+      "id": "catalog:const:CatalogConstants.PRICE_LIST_URL",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "symbol": "PRICE_LIST_URL",
+      "value_preview": "https://catalog.example/price-list.xlsx",
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:const:CatalogConstants.DEFAULT_SORT",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "symbol": "DEFAULT_SORT",
+      "value_preview": "price,asc",
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "catalog:const:CatalogConstants.WATERMARK",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "symbol": "WATERMARK",
+      "value_preview": "© Catalog Ltd 2026",
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    }
+  ]
+}

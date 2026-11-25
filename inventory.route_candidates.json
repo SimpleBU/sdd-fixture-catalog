@@ -1,0 +1,848 @@
+{
+  "version": "1.0.0",
+  "tool": {
+    "name": "sdd-testbed-generator",
+    "version": "1.0",
+    "note": "эталонная инвентаризация: что должен выдать анализатор на этом коде"
+  },
+  "route_candidates": {
+    "sha256:824b889886bb77147cee5d15940faf05a9d0bfc719f5304877670452ac414f4c": {
+      "candidate_id": "sha256:824b889886bb77147cee5d15940faf05a9d0bfc719f5304877670452ac414f4c",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/catalog/controller/ProductController.java",
+      "location": {
+        "start": {
+          "row": 20,
+          "column": 5
+        },
+        "end": {
+          "row": 23,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.catalog.controller.ProductController",
+        "name": "listProducts"
+      },
+      "context_hint": {
+        "package": "ru.testbed.catalog.controller",
+        "imports": [
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RequestParam",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.catalog.dto.BulkImportRequest",
+          "ru.testbed.catalog.dto.PageDto",
+          "ru.testbed.catalog.dto.ProductDto",
+          "ru.testbed.catalog.dto.StockSubscriptionDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.catalog.controller.ProductController"
+      },
+      "resolved": {
+        "sha256:f70f9a35ea546bcefbff777f63e8defc7e02cf3e32b5935625d5bbc6c5b0017b": {
+          "operation_id": "sha256:f70f9a35ea546bcefbff777f63e8defc7e02cf3e32b5935625d5bbc6c5b0017b",
+          "http_method": "GET",
+          "path": {
+            "template": "/api/products",
+            "normalized": "/api/products"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:f43b2f2e9808ffadbebd38df55066d0670e46b272fb9bb931a4768b7a72bf40d",
+              "name": "pageToken",
+              "in": "query",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": false
+            },
+            {
+              "parameter_id": "sha256:b51646f28d733ee7c55967641e3f40e78fc912ec6fb765264ff386c9c712b03b",
+              "name": "pageSize",
+              "in": "query",
+              "value_type": {
+                "kind": "primitive",
+                "title": "integer"
+              },
+              "required": false
+            },
+            {
+              "parameter_id": "sha256:5b598924211309b82e45dd188d62b0a862cfcbb69bd9806d3f16e32bbbfda5b8",
+              "name": "sortOrder",
+              "in": "query",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": false
+            },
+            {
+              "parameter_id": "sha256:b22031d19c970f5ce6fd54875b47392c64ce450df9ceda91bdc4d7e89de2a68e",
+              "name": "countryCode",
+              "in": "query",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": false
+            }
+          ]
+        }
+      }
+    },
+    "sha256:22e5a7248b30dd12f185b42cb92905667a9ee670ac1a9a8ea0efe6c2307b1bfb": {
+      "candidate_id": "sha256:22e5a7248b30dd12f185b42cb92905667a9ee670ac1a9a8ea0efe6c2307b1bfb",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/catalog/controller/ProductController.java",
+      "location": {
+        "start": {
+          "row": 25,
+          "column": 5
+        },
+        "end": {
+          "row": 28,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.catalog.controller.ProductController",
+        "name": "getProduct"
+      },
+      "context_hint": {
+        "package": "ru.testbed.catalog.controller",
+        "imports": [
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RequestParam",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.catalog.dto.BulkImportRequest",
+          "ru.testbed.catalog.dto.PageDto",
+          "ru.testbed.catalog.dto.ProductDto",
+          "ru.testbed.catalog.dto.StockSubscriptionDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.catalog.controller.ProductController"
+      },
+      "resolved": {
+        "sha256:2750f57b9abf1d0987759ec25fdac9e335820ce41160bf7fd2505e448ba827b9": {
+          "operation_id": "sha256:2750f57b9abf1d0987759ec25fdac9e335820ce41160bf7fd2505e448ba827b9",
+          "http_method": "GET",
+          "path": {
+            "template": "/api/products/{productId}",
+            "normalized": "/api/products/{productId}"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:828b31637560f00fbbeac2de28eef5c8f38df51067ef9900fdc494553fef24e7",
+              "name": "productId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "integer"
+              },
+              "required": true
+            }
+          ]
+        }
+      }
+    },
+    "sha256:9a133368b760a52d026ab001e902a33f7c6d59b60d62ae01eee7db1e5c1b0f93": {
+      "candidate_id": "sha256:9a133368b760a52d026ab001e902a33f7c6d59b60d62ae01eee7db1e5c1b0f93",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/catalog/controller/ProductController.java",
+      "location": {
+        "start": {
+          "row": 30,
+          "column": 5
+        },
+        "end": {
+          "row": 33,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.catalog.controller.ProductController",
+        "name": "bulkImport"
+      },
+      "context_hint": {
+        "package": "ru.testbed.catalog.controller",
+        "imports": [
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RequestParam",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.catalog.dto.BulkImportRequest",
+          "ru.testbed.catalog.dto.PageDto",
+          "ru.testbed.catalog.dto.ProductDto",
+          "ru.testbed.catalog.dto.StockSubscriptionDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.catalog.controller.ProductController"
+      },
+      "resolved": {
+        "sha256:400612726c916b0caef3054db94494a4fa6a955e5ed012750f9b49bbbac33942": {
+          "operation_id": "sha256:400612726c916b0caef3054db94494a4fa6a955e5ed012750f9b49bbbac33942",
+          "http_method": "POST",
+          "path": {
+            "template": "/api/products/bulk",
+            "normalized": "/api/products/bulk"
+          },
+          "confidence": "high",
+          "parameters": [],
+          "request_body": {
+            "request_body_id": "sha256:42ba93e038454b97dc444ba0032a8279927582e1d289438b16f003eab28a2dec",
+            "mode": "single",
+            "parts": [
+              {
+                "name": "request",
+                "value_type": {
+                  "kind": "object",
+                  "title": "BulkImportRequest",
+                  "properties": [
+                    {
+                      "name": "data",
+                      "value_type": {
+                        "kind": "array",
+                        "title": "List",
+                        "items": {
+                          "kind": "object",
+                          "title": "ProductDto",
+                          "properties": [
+                            {
+                              "name": "id",
+                              "value_type": {
+                                "kind": "primitive",
+                                "title": "integer"
+                              }
+                            },
+                            {
+                              "name": "sku",
+                              "value_type": {
+                                "kind": "primitive",
+                                "title": "string"
+                              }
+                            },
+                            {
+                              "name": "title",
+                              "value_type": {
+                                "kind": "primitive",
+                                "title": "string"
+                              }
+                            },
+                            {
+                              "name": "description",
+                              "value_type": {
+                                "kind": "primitive",
+                                "title": "string"
+                              }
+                            },
+                            {
+                              "name": "price",
+                              "value_type": {
+                                "kind": "primitive",
+                                "title": "number"
+                              }
+                            },
+                            {
+                              "name": "currency",
+                              "value_type": {
+                                "kind": "primitive",
+                                "title": "string"
+                              }
+                            },
+                            {
+                              "name": "panel",
+                              "value_type": {
+                                "kind": "primitive",
+                                "title": "string"
+                              }
+                            },
+                            {
+                              "name": "cardboardThickness",
+                              "value_type": {
+                                "kind": "primitive",
+                                "title": "integer"
+                              }
+                            },
+                            {
+                              "name": "tags",
+                              "value_type": {
+                                "kind": "array",
+                                "title": "List",
+                                "items": {
+                                  "kind": "primitive",
+                                  "title": "string"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "name": "dryRun",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "boolean"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sha256:67228aa2f50812451ebe1da485592cea8a20a6f84bc3847f2daa72c2f17f53e9": {
+      "candidate_id": "sha256:67228aa2f50812451ebe1da485592cea8a20a6f84bc3847f2daa72c2f17f53e9",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/catalog/controller/ProductController.java",
+      "location": {
+        "start": {
+          "row": 35,
+          "column": 5
+        },
+        "end": {
+          "row": 38,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.catalog.controller.ProductController",
+        "name": "exportProducts"
+      },
+      "context_hint": {
+        "package": "ru.testbed.catalog.controller",
+        "imports": [
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RequestParam",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.catalog.dto.BulkImportRequest",
+          "ru.testbed.catalog.dto.PageDto",
+          "ru.testbed.catalog.dto.ProductDto",
+          "ru.testbed.catalog.dto.StockSubscriptionDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.catalog.controller.ProductController"
+      },
+      "resolved": {
+        "sha256:4ff82c75a7590821d7567308516dbbce338c655751cbc8eeb7938b63ca6270f1": {
+          "operation_id": "sha256:4ff82c75a7590821d7567308516dbbce338c655751cbc8eeb7938b63ca6270f1",
+          "http_method": "GET",
+          "path": {
+            "template": "/api/products/export",
+            "normalized": "/api/products/export"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:dbc0dad533304aadb6bf28ebfa77034cf4c8bff1675a5a75ef7c2ef545e237ff",
+              "name": "zip",
+              "in": "query",
+              "value_type": {
+                "kind": "primitive",
+                "title": "boolean"
+              },
+              "required": false
+            },
+            {
+              "parameter_id": "sha256:e1ff2759be2c1a04cd804a1228b2accf34f6667ecfdecc7d6a90719a16d84cdd",
+              "name": "format",
+              "in": "query",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": false
+            }
+          ]
+        }
+      }
+    },
+    "sha256:450df26bfdfe3a131dac441e35b821a50c252b932410abc6d9c48ba9303a3bc7": {
+      "candidate_id": "sha256:450df26bfdfe3a131dac441e35b821a50c252b932410abc6d9c48ba9303a3bc7",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/catalog/controller/ProductController.java",
+      "location": {
+        "start": {
+          "row": 40,
+          "column": 5
+        },
+        "end": {
+          "row": 43,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.catalog.controller.ProductController",
+        "name": "subscribe"
+      },
+      "context_hint": {
+        "package": "ru.testbed.catalog.controller",
+        "imports": [
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RequestParam",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.catalog.dto.BulkImportRequest",
+          "ru.testbed.catalog.dto.PageDto",
+          "ru.testbed.catalog.dto.ProductDto",
+          "ru.testbed.catalog.dto.StockSubscriptionDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.catalog.controller.ProductController"
+      },
+      "resolved": {
+        "sha256:98a46628054147403acde92caa8bd265797f1df49748355dcef339ab15d1c04a": {
+          "operation_id": "sha256:98a46628054147403acde92caa8bd265797f1df49748355dcef339ab15d1c04a",
+          "http_method": "POST",
+          "path": {
+            "template": "/api/products/{productId}/subscriptions",
+            "normalized": "/api/products/{productId}/subscriptions"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:af0cc19369d8ab06fb19732796224677dc0b1b678a65c463f46a7c508dda92a8",
+              "name": "productId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "integer"
+              },
+              "required": true
+            }
+          ],
+          "request_body": {
+            "request_body_id": "sha256:92f318baf221ab2e42c8edfa97415d0ae4f00a5f4cba22e98d7d9a85bfb11fc5",
+            "mode": "single",
+            "parts": [
+              {
+                "name": "request",
+                "value_type": {
+                  "kind": "object",
+                  "title": "StockSubscriptionDto",
+                  "properties": [
+                    {
+                      "name": "email",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "notifyOnRestock",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "boolean"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sha256:ef774b6996911c0e38d20081d96ab8c5375c512b891148313ba44e37eb34ac98": {
+      "candidate_id": "sha256:ef774b6996911c0e38d20081d96ab8c5375c512b891148313ba44e37eb34ac98",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/catalog/controller/AuthorController.java",
+      "location": {
+        "start": {
+          "row": 14,
+          "column": 5
+        },
+        "end": {
+          "row": 17,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.catalog.controller.AuthorController",
+        "name": "listAuthors"
+      },
+      "context_hint": {
+        "package": "ru.testbed.catalog.controller",
+        "imports": [
+          "java.util.List",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.catalog.dto.AuthorDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.catalog.controller.AuthorController"
+      },
+      "resolved": {
+        "sha256:0aa52bdd6eaf8a499dc2ac293db0958be3150d7e6c1beab65850397ca10a07be": {
+          "operation_id": "sha256:0aa52bdd6eaf8a499dc2ac293db0958be3150d7e6c1beab65850397ca10a07be",
+          "http_method": "GET",
+          "path": {
+            "template": "/api/authors",
+            "normalized": "/api/authors"
+          },
+          "confidence": "high",
+          "parameters": []
+        }
+      }
+    },
+    "sha256:704bc4e445522c4f3fc05b98bbeac33ba9aae296cf42b282bb8f24efcb602f1f": {
+      "candidate_id": "sha256:704bc4e445522c4f3fc05b98bbeac33ba9aae296cf42b282bb8f24efcb602f1f",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/catalog/controller/StatsController.java",
+      "location": {
+        "start": {
+          "row": 14,
+          "column": 5
+        },
+        "end": {
+          "row": 17,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.catalog.controller.StatsController",
+        "name": "cardinality"
+      },
+      "context_hint": {
+        "package": "ru.testbed.catalog.controller",
+        "imports": [
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RequestParam",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.catalog.dto.CardinalityStatsDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.catalog.controller.StatsController"
+      },
+      "resolved": {
+        "sha256:4b72474f307c614e85ef918b989690d0d5d029a6a02d7413d719c494e9658557": {
+          "operation_id": "sha256:4b72474f307c614e85ef918b989690d0d5d029a6a02d7413d719c494e9658557",
+          "http_method": "GET",
+          "path": {
+            "template": "/api/stats/cardinality",
+            "normalized": "/api/stats/cardinality"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:6e540440f31f9f8258e7ea45090e4bed90c62295cd42db7e30dfac513ab889b0",
+              "name": "field",
+              "in": "query",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": false
+            }
+          ]
+        }
+      }
+    },
+    "sha256:b9ffe9e13fa9292a27c2c48c95904619616109292852a338b6018f94aaef384c": {
+      "candidate_id": "sha256:b9ffe9e13fa9292a27c2c48c95904619616109292852a338b6018f94aaef384c",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/catalog/controller/SalesReportController.java",
+      "location": {
+        "start": {
+          "row": 15,
+          "column": 5
+        },
+        "end": {
+          "row": 18,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.catalog.controller.SalesReportController",
+        "name": "salesReport"
+      },
+      "context_hint": {
+        "package": "ru.testbed.catalog.controller",
+        "imports": [
+          "java.time.LocalDate",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RequestParam",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.catalog.dto.SalesReportDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.catalog.controller.SalesReportController"
+      },
+      "resolved": {
+        "sha256:ba99cf1303c558e4723554c415efddccc2ab8ebd35dbaf2224becb62df0086a3": {
+          "operation_id": "sha256:ba99cf1303c558e4723554c415efddccc2ab8ebd35dbaf2224becb62df0086a3",
+          "http_method": "GET",
+          "path": {
+            "template": "/api/reports/sales",
+            "normalized": "/api/reports/sales"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:66401354afc318928bdc17dabb1104422c58eee7d57f8699e7c1971b3b3babc7",
+              "name": "from",
+              "in": "query",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": false
+            },
+            {
+              "parameter_id": "sha256:f10e86fe7dbfae689844504372bff83f195d22da00e4f0ed6189a838cd251a10",
+              "name": "to",
+              "in": "query",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": false
+            }
+          ]
+        }
+      }
+    },
+    "sha256:fcc092eaea0dc9b4af6d507a3e704895dcd460bd6e19c77ef88999a041dcff11": {
+      "candidate_id": "sha256:fcc092eaea0dc9b4af6d507a3e704895dcd460bd6e19c77ef88999a041dcff11",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/catalog/controller/FileController.java",
+      "location": {
+        "start": {
+          "row": 14,
+          "column": 5
+        },
+        "end": {
+          "row": 17,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.catalog.controller.FileController",
+        "name": "getFile"
+      },
+      "context_hint": {
+        "package": "ru.testbed.catalog.controller",
+        "imports": [
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.catalog.dto.FileDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.catalog.controller.FileController"
+      },
+      "resolved": {
+        "sha256:62b8a75c81272887b55456adc12776c68175abb72ccb7236d05c5c326c776df0": {
+          "operation_id": "sha256:62b8a75c81272887b55456adc12776c68175abb72ccb7236d05c5c326c776df0",
+          "http_method": "GET",
+          "path": {
+            "template": "/api/files/{fileId}",
+            "normalized": "/api/files/{fileId}"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:a5a055cb5e3dc67d01382f04755e912099e8fa671e0ae65bc858e7d45f085224",
+              "name": "fileId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            }
+          ]
+        }
+      }
+    },
+    "sha256:9d0bad520a6f16689455de31024ed1744f2f5874afd30573c94c482261401db1": {
+      "candidate_id": "sha256:9d0bad520a6f16689455de31024ed1744f2f5874afd30573c94c482261401db1",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/catalog/controller/CollectionController.java",
+      "location": {
+        "start": {
+          "row": 15,
+          "column": 5
+        },
+        "end": {
+          "row": 18,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.catalog.controller.CollectionController",
+        "name": "greetingCards"
+      },
+      "context_hint": {
+        "package": "ru.testbed.catalog.controller",
+        "imports": [
+          "java.util.List",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.catalog.dto.ProductDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.catalog.controller.CollectionController"
+      },
+      "resolved": {
+        "sha256:2420f37a29747b1ca5b8a2dc7a55e1ddf7bd98c233af83a9e859829f5e64d445": {
+          "operation_id": "sha256:2420f37a29747b1ca5b8a2dc7a55e1ddf7bd98c233af83a9e859829f5e64d445",
+          "http_method": "GET",
+          "path": {
+            "template": "/api/collections/cards",
+            "normalized": "/api/collections/cards"
+          },
+          "confidence": "high",
+          "parameters": []
+        }
+      }
+    }
+  },
+  "const_decls": [
+    {
+      "symbol": "CDN_HOST",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "expression": "cdn.catalog.example",
+      "location": {
+        "start": {
+          "row": 9,
+          "column": 5
+        }
+      }
+    },
+    {
+      "symbol": "API_VERSION",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "expression": "1.10.2.0",
+      "location": {
+        "start": {
+          "row": 10,
+          "column": 5
+        }
+      }
+    },
+    {
+      "symbol": "LOYALTY_PRODUCT_ID",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "expression": "5100382700012347",
+      "location": {
+        "start": {
+          "row": 11,
+          "column": 5
+        }
+      }
+    },
+    {
+      "symbol": "PLACEHOLDER_EMAIL",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "expression": "user@example.com",
+      "location": {
+        "start": {
+          "row": 12,
+          "column": 5
+        }
+      }
+    },
+    {
+      "symbol": "PRICE_LIST_URL",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "expression": "https://catalog.example/price-list.xlsx",
+      "location": {
+        "start": {
+          "row": 13,
+          "column": 5
+        }
+      }
+    },
+    {
+      "symbol": "DEFAULT_SORT",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "expression": "price,asc",
+      "location": {
+        "start": {
+          "row": 14,
+          "column": 5
+        }
+      }
+    },
+    {
+      "symbol": "WATERMARK",
+      "file_path": "src/main/java/ru/testbed/catalog/config/CatalogConstants.java",
+      "expression": "© Catalog Ltd 2026",
+      "location": {
+        "start": {
+          "row": 15,
+          "column": 5
+        }
+      }
+    }
+  ]
+}

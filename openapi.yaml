@@ -1,0 +1,310 @@
+openapi: 3.0.3
+info:
+  title: SDD testbed — каталог товаров (ловушки)
+  version: 1.0.0
+  description: Сгенерировано из manifest.yaml (sdd-testbed). Не править руками.
+servers:
+- url: http://localhost:8085
+paths:
+  /api/products:
+    get:
+      operationId: listProducts
+      tags:
+      - ProductController
+      parameters:
+      - name: pageToken
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: countryCode
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageDto'
+  /api/products/{productId}:
+    get:
+      operationId: getProduct
+      tags:
+      - ProductController
+      parameters:
+      - name: productId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductDto'
+  /api/products/bulk:
+    post:
+      operationId: bulkImport
+      tags:
+      - ProductController
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkImportRequest'
+      responses:
+        '204':
+          description: No Content
+  /api/products/export:
+    get:
+      operationId: exportProducts
+      tags:
+      - ProductController
+      parameters:
+      - name: zip
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: format
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /api/products/{productId}/subscriptions:
+    post:
+      operationId: subscribe
+      tags:
+      - ProductController
+      parameters:
+      - name: productId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockSubscriptionDto'
+      responses:
+        '204':
+          description: No Content
+  /api/authors:
+    get:
+      operationId: listAuthors
+      tags:
+      - AuthorController
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuthorDto'
+  /api/stats/cardinality:
+    get:
+      operationId: cardinality
+      tags:
+      - StatsController
+      parameters:
+      - name: field
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardinalityStatsDto'
+  /api/reports/sales:
+    get:
+      operationId: salesReport
+      tags:
+      - SalesReportController
+      parameters:
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: to
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SalesReportDto'
+  /api/files/{fileId}:
+    get:
+      operationId: getFile
+      tags:
+      - FileController
+      parameters:
+      - name: fileId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileDto'
+  /api/collections/cards:
+    get:
+      operationId: greetingCards
+      tags:
+      - CollectionController
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductDto'
+components:
+  schemas:
+    ProductDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        sku:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        currency:
+          type: string
+        panel:
+          type: string
+        cardboardThickness:
+          type: integer
+          format: int32
+        tags:
+          type: array
+          items:
+            type: string
+    PageDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductDto'
+        total:
+          type: integer
+          format: int64
+        nextPageToken:
+          type: string
+    BulkImportRequest:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductDto'
+        dryRun:
+          type: boolean
+    StockSubscriptionDto:
+      type: object
+      properties:
+        email:
+          type: string
+        notifyOnRestock:
+          type: boolean
+    AuthorDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        penName:
+          type: string
+        booksCount:
+          type: integer
+          format: int32
+    CardinalityStatsDto:
+      type: object
+      properties:
+        cardinality:
+          type: integer
+          format: int64
+        distinctValues:
+          type: integer
+          format: int64
+    SalesReportDto:
+      type: object
+      properties:
+        period:
+          type: string
+        totalRevenue:
+          type: number
+        ordersCount:
+          type: integer
+          format: int64
+        statusCode:
+          type: integer
+          format: int32
+    FileDto:
+      type: object
+      properties:
+        fileName:
+          type: string
+        contentType:
+          type: string
+        hostName:
+          type: string
+        size:
+          type: integer
+          format: int64
+        checksum:
+          type: string
